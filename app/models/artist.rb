@@ -4,6 +4,6 @@ class Artist < ApplicationRecord
   validates_presence_of :name
 
   def average_song_length
-    songs.average(:length).to_i
+    songs.average(:length)
   end
 end
