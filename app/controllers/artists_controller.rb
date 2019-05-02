@@ -5,6 +5,8 @@ class ArtistController < ApplicationController
   def create
     artist = Artist.new(artist_params)
     artist.save
+
+    redirect_to "/artists/#{artist.id}"
   end
 
   private
