@@ -9,6 +9,10 @@ class ArtistsController < ApplicationController
     redirect_to "/artists/#{artist.id}"
   end
 
+  def show
+    @artist = Artist.find(params[:id])
+  end
+
   private
 
   def artist_params
