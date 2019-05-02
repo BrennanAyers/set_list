@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get 'artists/new', to: 'artists#new'
   post '/artists', to: 'artists#create'
+  get '/artists', to: 'artists#show'
 end
