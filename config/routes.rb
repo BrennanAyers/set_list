@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/songs/:id', to: 'songs#show'
 
   get 'artists/new', to: 'artists#new'
-  post '/artists/', to: 'artists#create'
+  post '/artists', to: 'artists#create'
 end
