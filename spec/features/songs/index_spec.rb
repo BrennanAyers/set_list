@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'songs index page', type: :feature do
+  before :each do
+    @artist = create(:artist)
+    @song = create(:song, artist: @artist)
+    create_list(:song, 4, artist: @artist)
+  end
+
   it 'user can see all songs' do
     artist = Artist.create(name: "Placeholder")
     song_1 = artist.songs.create(title: "Don't Stop Believin'", length: 303, play_count: 123456)
