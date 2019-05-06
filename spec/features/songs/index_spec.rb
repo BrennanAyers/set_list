@@ -13,4 +13,22 @@ RSpec.describe 'songs index page', type: :feature do
     expect(page).to have_content(song_2.title)
     expect(page).to have_content "Play Count: #{song_2.play_count}"
   end
+
+  it 'shows song information grouped by song' do
+    artist = Artist.create!(name: '1903')
+    song_1 = artist.songs.create(title: 'Testing', length: 90, play_count: 1)
+    song_2 = artist.songs.create(title: 'Testing Redux', length: 90, play_count: 10)
+
+    visit '/songs'
+
+    within("#song_#{song_1.id}") do
+      expect(page).to have_content("Play Count: #{song_1.play_count}")
+      expect(page).to have_content("Length: #{song_1.length}")
+    end
+
+    within("#song_#{song_2.id}") do
+      expect(page).to have_content("Play Count: #{song_2.play_count}")
+      expect(page).to have_content("Length: #{song_2.length}")
+    end
+  end
 end
